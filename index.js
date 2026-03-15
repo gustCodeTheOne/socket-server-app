@@ -12,15 +12,12 @@ const io = require('socket.io')(server);
 app.use(express.static( __dirname + '/public'));
 
 io.on('connection', ( socket ) => { 
-    // Emision desde el servidor
-    socket.emit('mensaje-bienvenida', {
-        msg: 'Bienvenido al server',
-        fecha: new Date()
-    });
-
     // Recibir data desde el cliente
-    socket.on('mensaje-cliente', ( data ) => {
+    socket.on('mensaje-to-server', ( data ) => {
         console.log(data);
+
+        // Enviar mensaje a todos los clientes conectados
+        io.emit('mensaje-from-server', data);
     })
 });
 
