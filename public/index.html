@@ -48,7 +48,11 @@
 
         <script>
 
-            const socket = io('http://localhost:8080');
+            // STAGING :
+            // const socket = io('http://localhost:8080');
+
+            // PRODUCTION
+            const socket = io('https://socket-server-app.onrender.com/');
 
             // Referencias elementos del DOM
             const formulario = document.querySelector('#miFormulario');
